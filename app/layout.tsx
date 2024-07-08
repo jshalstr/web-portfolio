@@ -1,9 +1,9 @@
 import '@mantine/core/styles.css';
 import './styles.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript, AppShell, AppShellMain } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
-import Sidebar from '@/components/Sidebar/Sidebar';
+import AppShellComponent from '../components/AppShellComponent/AppShellComponent';
 
 export const metadata = {
   title: 'Josh Aleister Valenzuela',
@@ -23,10 +23,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme} withGlobalClasses defaultColorScheme="dark">
-          <AppShell navbar={{ width: 200, breakpoint: 'sm' }}>
-            <Sidebar />
-            <AppShellMain>{children}</AppShellMain>
-          </AppShell>
+          <AppShellComponent>{children}</AppShellComponent>
         </MantineProvider>
       </body>
     </html>

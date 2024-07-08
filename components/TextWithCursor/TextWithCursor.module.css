@@ -1,0 +1,22 @@
+.text {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.cursor {
+  background-color: rgb(15 23 42);
+  width: 0.25rem;
+  height: 2rem;
+
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgb(217, 223, 235);
+  }
+}
