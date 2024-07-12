@@ -18,17 +18,19 @@ export default function AppShellComponent({ children }: IProps) {
         <AppShellMain h="100svh" className="relative overflow-hidden isolate">
           <FloatingBlob />
           <Flex
-            style={{
-              outline: 'inset white 0.1px',
-              outlineOffset: -25,
-              padding: 40,
-              height: '100%',
-            }}
             direction="column"
+            h="100%"
+            className="outline outline-white outline-1 outline-offset-[-12px] md:outline-offset-[-25px] p-6 md:p-8 lg:p-10"
           >
             <div className="ml-auto">
               <TextWithCursor>
-                <Title fw={100} ta="end" className="float-right" textWrap="balance">
+                <Title
+                  fw={100}
+                  fz={{ base: 26, md: 32 }}
+                  ta="end"
+                  className="float-right"
+                  textWrap="balance"
+                >
                   Josh Aleister Valenzuela
                 </Title>
               </TextWithCursor>
