@@ -1,6 +1,18 @@
 'use client';
 
-import { Group, Stack, Text, Timeline, TimelineItem, Title } from '@mantine/core';
+import {
+  Badge,
+  Group,
+  Image,
+  Modal,
+  Stack,
+  Text,
+  Timeline,
+  TimelineItem,
+  Title,
+} from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 interface Project {
@@ -121,10 +133,54 @@ export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<null | Project>(null);
 
   return (
-    <Stack className="self-start" w="100%">
-      <Title fw={100}>Projects</Title>
-      <Group w="100%">
-        <Timeline>
+    <Stack className="self-start" w="100%" h="100%">
+      <Title fw={100} fz={{ base: 24, md: 30 }} lineClamp={1}>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 10,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.4,
+            ease: 'easeInOut',
+            type: 'spring',
+            stiffness: 100,
+            damping: 10,
+          }}
+          exit={{
+            opacity: 0,
+            y: -40,
+            x: 40,
+            filter: 'blur(8px)',
+            scale: 2,
+            position: 'absolute',
+          }}
+          className="z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2"
+          key={selectedProject?.title}
+        >
+          {selectedProject?.title &&
+            selectedProject.title.split('').map((letter, index) => (
+              <motion.span
+                key={selectedProject.title + index}
+                initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{
+                  delay: index * 0.06,
+                  duration: 0.3,
+                }}
+                className="inline-block"
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </motion.span>
+            ))}
+        </motion.div>
+      </Title>
+      <Group gap={20} h="100%" align="start" wrap="nowrap">
+        <Timeline bulletSize={14} lineWidth={2}>
           {projects.map((project) => (
             <ProjectItem
               key={project.title}
