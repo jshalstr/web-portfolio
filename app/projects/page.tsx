@@ -114,7 +114,7 @@ function ProjectItem({ title, year, onClick, active }: any) {
   return (
     <TimelineItem
       title={
-        <Text fz={{ base: 14, md: 16 }} fw={500} inline>
+        <Text fz={{ base: 14, md: 16 }} lineClamp={2} fw={100} inline>
           {title}
         </Text>
       }
@@ -129,8 +129,52 @@ function ProjectItem({ title, year, onClick, active }: any) {
   );
 }
 
+function ProjectDetails({ project }: { project: Project }) {
+  if (!project) {
+    return <Text className="self-center m-auto mt-4 mx-auto">Select a project to see details</Text>;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      key={project.title}
+      className="m-auto mt-4 md:-mt-14"
+    >
+      <Stack className="p-4 border rounded-lg shadow-lg m-auto">
+        <Image
+          src={project.image}
+          alt={project.title}
+          mah={300}
+          maw={600}
+          w="auto"
+          height={300}
+          fit="contain"
+          radius="md"
+        />
+        <Text fz="sm" maw={600}>
+          <ul>
+            {project.description.map((desc, index) => (
+              <li key={index}>{desc}</li>
+            ))}
+          </ul>
+        </Text>
+        <Group gap={5}>
+          {project.tags.map((tag, index) => (
+            <Badge key={index} color="blue" variant="light">
+              {tag}
+            </Badge>
+          ))}
+        </Group>
+      </Stack>
+    </motion.div>
+  );
+}
+
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<null | Project>(null);
+  const isMedium = useMediaQuery('(max-width: 62em)');
 
   return (
     <Stack className="self-start" w="100%" h="100%">
@@ -191,7 +235,17 @@ export default function ProjectsPage() {
             />
           ))}
         </Timeline>
-        <Text m="auto">Select a Project</Text>
+        {isMedium ? (
+          <Modal
+            opened={!!selectedProject}
+            onClose={() => setSelectedProject(null)}
+            title={selectedProject?.title}
+          >
+            {selectedProject && <ProjectDetails project={selectedProject} />}
+          </Modal>
+        ) : (
+          selectedProject && <ProjectDetails project={selectedProject} />
+        )}
       </Group>
     </Stack>
   );
