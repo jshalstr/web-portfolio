@@ -1,6 +1,16 @@
 'use client';
 
-import { AppShell, AppShellMain, Flex, Space, Stack, Title } from '@mantine/core';
+import {
+  Affix,
+  AppShell,
+  AppShellAside,
+  AppShellMain,
+  Burger,
+  Portal,
+  Stack,
+  Title,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import TextWithCursor from '../TextWithCursor/TextWithCursor';
 import NavigationLinks from '../NavigationLinks/NavigationLinks';
 import FloatingBlob from '../FloatingBlob/FloatingBlob';
@@ -10,44 +20,53 @@ interface IProps {
 }
 
 export default function AppShellComponent({ children }: IProps) {
-  // const [sidebarOpened, setSidebarOpened] = useDisclosure(false);
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
 
   return (
     <>
-      <AppShell padding={0}>
-        <AppShellMain h="100svh" className="relative overflow-hidden isolate">
-          <FloatingBlob />
-          <Flex
-            direction="column"
-            h="100%"
-            className="outline outline-white outline-1 outline-offset-[-12px] md:outline-offset-[-25px] p-6 md:p-8 lg:p-10"
-          >
-            <div className="ml-auto">
+      <Portal>
+        <div className="fixed inset-0 -z-10">
+          <div className="absolute -top-[100px] right-[325px]">
+            <FloatingBlob />
+          </div>
+          <div className="fixed inset-0 outline outline-white outline-1 outline-offset-[-16px] md:outline-offset-[-20px]" />
+        </div>
+      </Portal>
+      <AppShell
+        aside={{
+          width: 350,
+          breakpoint: 'sm',
+          collapsed: { mobile: !mobileOpened },
+        }}
+        padding="40px"
+        withBorder={false}
+      >
+        <AppShellMain bg="none" pt={60}>
+          <Affix hiddenFrom="sm" position={{ bottom: 20, right: 20 }}>
+            <Burger opened={mobileOpened} onClick={toggleMobile} size="sm" />
+          </Affix>
+          {children}
+        </AppShellMain>
+        <AppShellAside
+          bg={{ base: 'black', sm: 'none' }}
+          p={{
+            base: 'xl',
+            md: 'var(--mantine-spacing-xl) var(--mantine-spacing-xl) 0px var(--mantine-spacing-sm)',
+          }}
+        >
+          <Stack h="100%">
+            <div className="self-end">
               <TextWithCursor>
-                <Title
-                  fw={100}
-                  fz={{ base: 26, md: 32 }}
-                  ta="end"
-                  className="float-right"
-                  textWrap="balance"
-                >
+                <Title fw={100} fz={{ base: 26, md: 32 }} ta="end">
                   Josh Aleister Valenzuela
                 </Title>
               </TextWithCursor>
             </div>
-            <Flex className="grow">
-              <Flex className="w-4/5" align="center">
-                {children}
-              </Flex>
-              <div className="w-1/5">
-                <Stack align="end">
-                  <Space h={150} />
-                  <NavigationLinks />
-                </Stack>
-              </div>
-            </Flex>
-          </Flex>
-        </AppShellMain>
+            <div className="h-2/3 mt-auto sm:my-auto pr-14 sm:pr-0 self-center sm:self-end">
+              <NavigationLinks />
+            </div>
+          </Stack>
+        </AppShellAside>
       </AppShell>
     </>
   );
