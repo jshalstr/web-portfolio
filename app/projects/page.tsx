@@ -177,7 +177,7 @@ export default function ProjectsPage() {
   const isMedium = useMediaQuery('(max-width: 62em)');
 
   return (
-    <Stack className="self-start" w="100%" h="100%">
+    <Stack>
       <Title fw={100} fz={{ base: 24, md: 30 }} lineClamp={1}>
         <motion.div
           initial={{

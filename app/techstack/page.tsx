@@ -54,7 +54,7 @@ const techStack = {
 
 export default function TechStackPage() {
   return (
-    <Stack className="self-start" w="100%" h="100%">
+    <Stack>
       <Title fw={100} fz={{ base: 24, md: 30 }} lineClamp={1}>
         Tech Stack
       </Title>
