@@ -1,23 +1,15 @@
 'use client';
 
-import { Flex, Group, Text } from '@mantine/core';
+import { Stack, Group, Title } from '@mantine/core';
 import GradientButton from '@/components/GradientButton/GradientButton';
 
 export default function HomePage() {
   return (
-    <Flex
-      align="center"
-      justify="center"
-      wrap="wrap"
-      direction="column"
-      rowGap={30}
-      columnGap={40}
-      m="auto"
-    >
-      <Text>
+    <Stack justify="center" align="center" h="84svh" m="auto">
+      <Title fz={{ base: 24, md: 30 }} ta={{ base: 'left', md: 'center' }}>
         With a passion for web and software development, I am eager to bring innovative solutions to
         real-world challenges.
-      </Text>
+      </Title>
       <Group>
         <GradientButton
           label="LinkedIn"
@@ -30,6 +22,6 @@ export default function HomePage() {
           tooltip="Download my resume"
         />
       </Group>
-    </Flex>
+    </Stack>
   );
 }
