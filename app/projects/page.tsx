@@ -152,15 +152,16 @@ function ProjectDetails({ project }: { project: Project }) {
           fit="contain"
           radius="md"
         />
-        <Text fz="sm" maw={600}>
-          <List className="list-disc list-inside">
-            {project.description.map((desc, index) => (
-              <ListItem fw={200} key={index}>
+
+        <List className="list-disc list-inside" p={15}>
+          {project.description.map((desc, index) => (
+            <ListItem fw={200} key={index}>
+              <Text fz={{ base: 'xs', sm: 'sm' }} maw={600}>
                 {desc}
-              </ListItem>
-            ))}
-          </List>
-        </Text>
+              </Text>
+            </ListItem>
+          ))}
+        </List>
         <Group gap={5}>
           {project.tags.map((tag, index) => (
             <Badge key={index} color="blue" variant="light">
