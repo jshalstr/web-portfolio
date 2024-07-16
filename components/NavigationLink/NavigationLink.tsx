@@ -24,7 +24,7 @@ export default function NavigationLink({ label, link, isActive }: IProps) {
       <Text
         ta="end"
         component={Link}
-        fz={{ base: 'sm', md: 'md' }}
+        fz={{ base: 'lg', sm: 'md' }}
         fw={200}
         href={link}
         onMouseEnter={() => setIsHovered(true)}
