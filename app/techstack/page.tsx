@@ -76,7 +76,7 @@ export default function TechStackPage() {
               maw={300}
             >
               <Title order={3}>{category}</Title>
-              <SimpleGrid mt="sm" cols={2}>
+              <SimpleGrid mt="sm" cols={{ base: 1, xs: 2 }}>
                 {items.map(({ name, icon: Icon }) => (
                   <Group wrap="nowrap" key={name}>
                     <Avatar size={40} radius="xl" color="gray">
