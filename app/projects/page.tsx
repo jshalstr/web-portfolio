@@ -4,6 +4,8 @@ import {
   Badge,
   Group,
   Image,
+  List,
+  ListItem,
   Modal,
   Stack,
   Text,
@@ -150,11 +152,13 @@ function ProjectDetails({ project }: { project: Project }) {
           radius="md"
         />
         <Text fz="sm" maw={600}>
-          <ul>
+          <List className="list-disc list-inside">
             {project.description.map((desc, index) => (
-              <li key={index}>{desc}</li>
+              <ListItem fw={200} key={index}>
+                {desc}
+              </ListItem>
             ))}
-          </ul>
+          </List>
         </Text>
         <Group gap={5}>
           {project.tags.map((tag, index) => (

@@ -37,7 +37,7 @@ export default function SuhayProject() {
           a streamlined way to track identified issues during meetings.
         </Text>
         <Title size="h3">Nature of Practicum</Title>
-        <List>
+        <List className="list-disc">
           <ListItem fw={200}>
             Code Familiarization: During the early weeks of our practicum, we were tasked to
             comprehend and explore the existing code without proper documentation. Afterwards, we
