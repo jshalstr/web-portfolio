@@ -55,9 +55,9 @@ export default function AppShellComponent({ children }: IProps) {
           }}
         >
           <Stack h="100%">
-            <div className="self-end">
+            <div className="self-center sm:self-end">
               <TextWithCursor>
-                <Title fw={100} fz={{ base: 26, md: 32 }} ta="end">
+                <Title fw={100} fz={{ base: 26, md: 32 }} className="text-wrap xs:text-nowrap">
                   Josh Aleister Valenzuela
                 </Title>
               </TextWithCursor>
