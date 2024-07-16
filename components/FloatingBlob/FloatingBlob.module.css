@@ -20,17 +20,14 @@
 
 @keyframes animate {
   0% {
-    translate: 375% -20%;
     border-radius: 60% 40% 30% 70% / 100% 85% 92% 74%;
   }
   50% {
-    translate: 375% -20%;
     border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
     rotate: 41deg;
     scale: 1.15;
   }
   100% {
-    translate: 375% -20%;
     border-radius: 100% 75% 92% 74% / 60% 80% 30% 70%;
     rotate: -60deg;
     scale: 1.05;
