@@ -67,7 +67,7 @@ export default function TechStackPage() {
             transition={{ delay: index * 0.1 }}
           >
             <Card
-              className="transition duration-500 hover:scale-105 shadow-md shadow-blue-400 hover:shadow-md hover:shadow-blue-700"
+              className="transition duration-500 hover:scale-105 shadow-md shadow-white hover:shadow-md hover:shadow-blue-700"
               shadow="0 4px 6px -1px white, 0 2px 4px -2px white"
               bg="transparent"
               padding="lg"
