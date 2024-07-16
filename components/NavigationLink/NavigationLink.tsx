@@ -8,9 +8,10 @@ interface IProps {
   label: string;
   link: string;
   isActive: boolean;
+  onClick?: () => void;
 }
 
-export default function NavigationLink({ label, link, isActive }: IProps) {
+export default function NavigationLink({ label, link, isActive, onClick }: IProps) {
   const { hovered, ref } = useHover();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -30,6 +31,7 @@ export default function NavigationLink({ label, link, isActive }: IProps) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="relative"
+        onClick={onClick}
       >
         {label}
         <span

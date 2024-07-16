@@ -2,7 +2,11 @@ import { Stack } from '@mantine/core';
 import { usePathname } from 'next/navigation';
 import NavigationLink from '../NavigationLink/NavigationLink';
 
-export default function NavigationLinks() {
+interface IProps {
+  onClick?: () => void;
+}
+
+export default function NavigationLinks({ onClick }: IProps) {
   const pathname = usePathname();
   const links = [
     { label: 'Home', link: '/' },
@@ -19,6 +23,7 @@ export default function NavigationLinks() {
           label={link.label}
           link={link.link}
           isActive={pathname === link.link}
+          onClick={onClick}
         />
       ))}
     </Stack>

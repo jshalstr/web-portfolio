@@ -63,7 +63,7 @@ export default function AppShellComponent({ children }: IProps) {
               </TextWithCursor>
             </div>
             <div className="h-2/3 mt-auto sm:my-auto pr-14 sm:pr-0 self-center sm:self-end">
-              <NavigationLinks />
+              <NavigationLinks onClick={toggleMobile} />
             </div>
           </Stack>
         </AppShellAside>
