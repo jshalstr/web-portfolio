@@ -33,7 +33,7 @@ export default function ExperiencePage() {
               padding="lg"
               radius="md"
               withBorder
-              w={300}
+              maw={300}
             >
               <Stack>
                 <Title order={3}>{name}</Title>

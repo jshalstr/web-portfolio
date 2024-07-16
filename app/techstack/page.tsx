@@ -73,7 +73,7 @@ export default function TechStackPage() {
               padding="lg"
               radius="md"
               withBorder
-              w={300}
+              maw={300}
             >
               <Title order={3}>{category}</Title>
               <SimpleGrid mt="sm" cols={2}>

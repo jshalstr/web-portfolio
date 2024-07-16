@@ -145,7 +145,8 @@ function ProjectDetails({ project }: { project: Project }) {
           src={project.image}
           alt={project.title}
           mah={250}
-          maw={{ base: 450, lg: 600 }}
+          maw={600}
+          miw={{ base: 0, sm: 450 }}
           w="auto"
           height={300}
           fit="contain"
