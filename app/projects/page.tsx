@@ -130,24 +130,20 @@ function ProjectItem({ title, year, onClick, active }: any) {
 }
 
 function ProjectDetails({ project }: { project: Project }) {
-  if (!project) {
-    return <Text className="self-center m-auto mt-4 mx-auto">Select a project to see details</Text>;
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       key={project.title}
-      className="m-auto mt-4 md:-mt-14"
+      className="m-auto"
     >
       <Stack className="p-4 border rounded-lg shadow-lg m-auto">
         <Image
           src={project.image}
           alt={project.title}
-          mah={300}
-          maw={600}
+          mah={250}
+          maw={{ base: 450, lg: 600 }}
           w="auto"
           height={300}
           fit="contain"
