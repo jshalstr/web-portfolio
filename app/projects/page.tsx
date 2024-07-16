@@ -170,7 +170,7 @@ function ProjectDetails({ project }: { project: Project }) {
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<null | Project>(null);
-  const isMedium = useMediaQuery('(max-width: 62em)');
+  const isSmall = useMediaQuery('(max-width: 48em)');
 
   return (
     <Stack>
@@ -220,27 +220,35 @@ export default function ProjectsPage() {
         </motion.div>
       </Title>
       <Group gap={20} h="100%" align="start" wrap="nowrap">
-        <Timeline bulletSize={14} lineWidth={2}>
-          {projects.map((project) => (
-            <ProjectItem
-              key={project.title}
-              title={project.title}
-              year={project.year}
-              onClick={() => setSelectedProject(project)}
-              active={selectedProject?.title === project.title}
-            />
-          ))}
-        </Timeline>
-        {isMedium ? (
+        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+          <Timeline bulletSize={14} lineWidth={2}>
+            {projects.map((project) => (
+              <ProjectItem
+                key={project.title}
+                title={project.title}
+                year={project.year}
+                onClick={() => setSelectedProject(project)}
+                active={selectedProject?.title === project.title}
+              />
+            ))}
+          </Timeline>
+        </motion.div>
+        {isSmall ? (
           <Modal
             opened={!!selectedProject}
             onClose={() => setSelectedProject(null)}
             title={selectedProject?.title}
           >
-            {selectedProject && <ProjectDetails project={selectedProject} />}
+            {selectedProject ? (
+              <ProjectDetails project={selectedProject} />
+            ) : (
+              <Text className="self-center m-auto">Select a project to see details</Text>
+            )}
           </Modal>
+        ) : selectedProject ? (
+          <ProjectDetails project={selectedProject} />
         ) : (
-          selectedProject && <ProjectDetails project={selectedProject} />
+          <Text className="self-center m-auto">Select a project to see details</Text>
         )}
       </Group>
     </Stack>
