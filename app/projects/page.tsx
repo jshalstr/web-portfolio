@@ -141,7 +141,7 @@ function ProjectDetails({ project }: { project: Project }) {
       key={project.title}
       className="m-auto"
     >
-      <Stack className="p-4 border rounded-lg shadow-lg m-auto">
+      <Stack align="center" className="p-4 border rounded-lg shadow-lg m-auto">
         <Image
           component={NextImage}
           src={project.image}
