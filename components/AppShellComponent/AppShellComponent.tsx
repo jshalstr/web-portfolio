@@ -25,7 +25,7 @@ export default function AppShellComponent({ children }: IProps) {
   return (
     <>
       <Portal>
-        <div className="fixed inset-0 -z-10">
+        <div className="fixed inset-0 border-solid border-black border-[16px] md:border-[20px] pointer-events-none">
           <div className="absolute -top-[100px] right-[325px]">
             <FloatingBlob />
           </div>
