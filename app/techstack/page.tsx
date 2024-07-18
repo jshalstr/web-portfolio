@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, Group, Stack, Title, Text, Avatar, SimpleGrid } from '@mantine/core';
+import { Group, Stack, Title, Text, Avatar, SimpleGrid } from '@mantine/core';
 import {
   IconBrandPython,
   IconBrandJavascript,
@@ -22,6 +22,7 @@ import {
   IconBrandVisualStudio,
   IconBrandAndroid,
 } from '@tabler/icons-react';
+import Card from '@/components/Card/Card';
 
 const techStack = {
   'Programming Languages': [
@@ -66,15 +67,7 @@ export default function TechStackPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card
-              className="transition duration-500 hover:scale-105 shadow-md shadow-white hover:shadow-md hover:shadow-blue-700"
-              shadow="0 4px 6px -1px white, 0 2px 4px -2px white"
-              bg="transparent"
-              padding="lg"
-              radius="md"
-              withBorder
-              maw={300}
-            >
+            <Card>
               <Title order={3}>{category}</Title>
               <SimpleGrid mt="sm" cols={{ base: 1, xs: 2 }}>
                 {items.map(({ name, icon: Icon }) => (

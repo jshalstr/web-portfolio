@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Button, Card, Group, Stack, Text, Title } from '@mantine/core';
+import { Button, Group, Stack, Text, Title } from '@mantine/core';
 import Link from 'next/link';
+import Card from '@/components/Card/Card';
 
 const experiences = [
   {
@@ -26,15 +27,7 @@ export default function ExperiencePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card
-              className="transition duration-500 hover:scale-105 shadow-md shadow-white hover:shadow-md hover:shadow-blue-700"
-              shadow="0 4px 6px -1px white, 0 2px 4px -2px white"
-              bg="transparent"
-              padding="lg"
-              radius="md"
-              withBorder
-              maw={300}
-            >
+            <Card>
               <Stack>
                 <Title order={3}>{name}</Title>
                 <div>
