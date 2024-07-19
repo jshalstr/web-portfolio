@@ -6,7 +6,7 @@ import GradientButton from '@/components/GradientButton/GradientButton';
 export default function HomePage() {
   return (
     <Stack justify="center" align="center" h="84svh" m="auto">
-      <Title fz={{ base: 24, md: 30 }} ta={{ base: 'left', md: 'center' }}>
+      <Title fz={{ base: 24, md: 30 }} ta={{ base: 'left', md: 'center' }} fw={100}>
         With a passion for web and software development, I am eager to bring innovative solutions to
         real-world challenges.
       </Title>
