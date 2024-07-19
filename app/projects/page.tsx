@@ -20,16 +20,18 @@ import NextImage from 'next/image';
 
 interface Project {
   title: string;
-  image: string;
+  link: string;
   description: string[];
   year: number;
   tags: string[];
+  type: 'video' | 'image';
+  course: string[];
 }
 
 const projects: Project[] = [
   {
     title: 'Glimpse',
-    image: '/images/glimpse.png',
+    link: '/videos/glimpse.mp4',
     description: [
       'Tool for visually impaired students to communicate with teachers and engage in the classroom.',
       'Comprises three Android applications: smartwatch application for the blind, companion application for teachers, and interactive activity application for sighted students.',
@@ -38,10 +40,12 @@ const projects: Project[] = [
     ],
     year: 2024,
     tags: ['Kotlin', 'Jetpack Compose', 'Android', 'Room'],
+    type: 'video',
+    course: ['IT200-1D', 'IT200-2D'],
   },
   {
     title: 'Autopot',
-    image: '/images/autopot.jpg',
+    link: '/images/autopot.jpg',
     description: [
       'IoT system for automated plant maintenance.',
       'Monitors temperature, humidity, soil moisture, and light exposure.',
@@ -51,10 +55,12 @@ const projects: Project[] = [
     ],
     year: 2023,
     tags: ['PHP', 'Javascript', 'Bootstrap', 'MySQL', 'Arduino'],
+    type: 'image',
+    course: ['IT152P', 'IT153P', 'IT154P', 'IT155P'],
   },
   {
     title: 'Logo Guesser',
-    image: '/images/logoguesser.jpg',
+    link: '/videos/logoguesser.mp4',
     description: [
       'Engaging Android game challenging users to guess logos from various brands.',
       'Features a scoring system to track user progress.',
@@ -63,10 +69,12 @@ const projects: Project[] = [
     ],
     year: 2022,
     tags: ['Android', 'Xamarin', 'C#'],
+    type: 'video',
+    course: ['IT123P'],
   },
   {
     title: 'DejaBrew',
-    image: '/images/dejabrew.jpg',
+    link: '/images/dejabrew.jpg',
     description: [
       'Mock e-commerce website inspired by Starbucks.',
       'Allows users to add drinks to their cart and make purchases, accurately reflected in the database.',
@@ -75,10 +83,12 @@ const projects: Project[] = [
     ],
     year: 2022,
     tags: ['ASP.NET', 'C#', 'MS Access'],
+    type: 'image',
+    course: ['CS107', 'IT114'],
   },
   {
     title: 'Restaurant Ordering System',
-    image: '/images/ros.jpg',
+    link: '/videos/ros.mkv',
     description: [
       'Console-based C# program using Binary Search Trees to create priority orders.',
       'Efficiently manages and prioritizes customer orders based on urgency.',
@@ -87,10 +97,12 @@ const projects: Project[] = [
     ],
     year: 2021,
     tags: ['C#'],
+    type: 'video',
+    course: ['CS102-1'],
   },
   {
     title: 'POS Express',
-    image: '/images/posexpress.jpg',
+    link: '/videos/pos.mkv',
     description: [
       'Console-based C# program mimicking a point-of-sale system.',
       'Uses Object-Oriented Programming (OOP) principles.',
@@ -99,10 +111,12 @@ const projects: Project[] = [
     ],
     year: 2021,
     tags: ['C#'],
+    type: 'video',
+    course: ['IT111'],
   },
   {
-    title: '4 Pics One Word Clone',
-    image: '/images/4pics.jpg',
+    title: '4 Pics 1 Word Clone',
+    link: '/images/4pics1word.jpg',
     description: [
       'Puzzle game where players guess the common word linking four images.',
       "Tests players' vocabulary and cognitive skills in a fun and challenging way.",
@@ -110,6 +124,8 @@ const projects: Project[] = [
     ],
     year: 2020,
     tags: ['Python', 'tkinter'],
+    type: 'image',
+    course: ['IT101-2'],
   },
 ];
 
@@ -141,20 +157,35 @@ function ProjectDetails({ project }: { project: Project }) {
       key={project.title}
       className="m-auto"
     >
-      <Stack align="center" className="p-4 border rounded-lg shadow-lg m-auto">
-        <Image
-          component={NextImage}
-          src={project.image}
-          alt={project.title}
-          mah={250}
-          maw={600}
-          miw={{ base: 0, sm: 450 }}
-          width={600}
-          height={300}
-          fit="contain"
-          radius="md"
-        />
-
+      <Stack>
+        <Group gap={5}>
+          {project.course.map((tag, index) => (
+            <Badge key={index} color="blue" variant="light">
+              {tag}
+            </Badge>
+          ))}
+        </Group>
+        {project.type === 'image' ? (
+          <Image
+            component={NextImage}
+            src={project.link}
+            alt={project.title}
+            mah={250}
+            maw={600}
+            miw={{ base: 0, sm: 450 }}
+            width={600}
+            height={300}
+            fit="contain"
+            radius="md"
+          />
+        ) : (
+          // eslint-disable-next-line jsx-a11y/media-has-caption
+          <video
+            src={project.link}
+            className="max-h-[250px] max-w-[600px] min-w-0 sm:min-w-[450px] rounded-md object-contain"
+            controls
+          />
+        )}
         <List className="list-disc list-inside" p={15}>
           {project.description.map((desc, index) => (
             <ListItem fw={200} key={index}>
