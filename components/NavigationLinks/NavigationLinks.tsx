@@ -13,6 +13,7 @@ export default function NavigationLinks({ onClick }: IProps) {
     { label: 'Projects', link: '/projects' },
     { label: 'Tech Stack', link: '/techstack' },
     { label: 'Experience', link: '/experience' },
+    { label: 'Seminars And Certificates', link: '/semsandcerts' },
   ];
 
   return (
