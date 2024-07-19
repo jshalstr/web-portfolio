@@ -213,36 +213,36 @@ export default function ProjectsPage() {
 
   return (
     <Stack>
-      <Title fw={100} fz={{ base: 24, md: 30 }} lineClamp={1}>
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: 'easeInOut',
-            type: 'spring',
-            stiffness: 100,
-            damping: 10,
-          }}
-          exit={{
-            opacity: 0,
-            y: -40,
-            x: 40,
-            filter: 'blur(8px)',
-            scale: 2,
-            position: 'absolute',
-          }}
-          className="z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2"
-          key={selectedProject?.title}
-        >
-          {selectedProject?.title &&
-            selectedProject.title.split('').map((letter, index) => (
+      {selectedProject ? (
+        <Title fw={100} fz={{ base: 24, md: 30 }} lineClamp={1}>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 10,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 100,
+              damping: 10,
+            }}
+            exit={{
+              opacity: 0,
+              y: -40,
+              x: 40,
+              filter: 'blur(8px)',
+              scale: 2,
+              position: 'absolute',
+            }}
+            className="z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2"
+            key={selectedProject?.title}
+          >
+            {selectedProject.title.split('').map((letter, index) => (
               <motion.span
                 key={selectedProject.title + index}
                 initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
@@ -256,8 +256,13 @@ export default function ProjectsPage() {
                 {letter === ' ' ? '\u00A0' : letter}
               </motion.span>
             ))}
-        </motion.div>
-      </Title>
+          </motion.div>
+        </Title>
+      ) : (
+        <Title fw={100} fz={{ base: 24, md: 30 }} lineClamp={1}>
+          Projects
+        </Title>
+      )}
       <Group gap={20} h="100%" align="start" wrap="nowrap">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <Timeline bulletSize={14} lineWidth={2}>
