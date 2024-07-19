@@ -65,38 +65,88 @@ export default function SuhayProject() {
         </Text>
         <Title size="h5">Key Features</Title>
         <List className="list-disc" px={15}>
-          <ListItem fw={200}>Create and manage meetings</ListItem>
+          <ListItem fw={200}>
+            Create and manage meetings: After logging in, users can create and view meetings. For
+            creating meetings, users must fill up the required fields, including the Agenda,
+            Attendees, Start and End Date and Facilitator of the meeting. The meetings available for
+            viewing are those that the user is an attendee in.
+          </ListItem>
           <Group grow>
             <Image src="/images/ITApp/createmeeting.png" />
             <Image src="/images/ITApp/viewmeetings.png" />
           </Group>
           <Space h="lg" />
-          <ListItem fw={200}>Raise and track issues within meetings</ListItem>
+          <ListItem fw={200}>
+            Raise and track issues within meetings: Inside a meeting, a user can raise issues where
+            they must fill up the required fields, including the Issue title, Action Plan, Issue and
+            Completion Date, Responsibles, Raised by, Frequency, and Priority of the meeting. By
+            default, the user can only view issues that they are responsible for or have raised.
+            They may toggle the filter to view all issues within the meeting. Furthermore, the user
+            may filter out issues based on their status.
+          </ListItem>
           <Group grow>
             <Image src="/images/ITApp/createissue.png" />
             <Image src="/images/ITApp/viewissuesonmeeting.png" />
           </Group>
           <Space h="lg" />
-          <ListItem fw={200}>Filter and sort meetings and issues</ListItem>
+          <ListItem fw={200}>
+            Filter and sort meetings and issues: Users can filter, sort and search meetings and
+            issues to help them find what they need.
+          </ListItem>
           <Group grow>
             <Image src="/images/ITApp/viewissues.png" />
             <Image src="/images/ITApp/viewmeetings.png" />
           </Group>
           <Space h="lg" />
-          <ListItem fw={200}>Comment and attach files to issues</ListItem>
+          <ListItem fw={200}>
+            Comment and attach files to issues: The users who raised an issue and users who are
+            responsible for an issue may converse with each other using the comment section. This
+            will help in tracking the progress and whether the issue has been resolved. Users are
+            also able to attach and download files as needed within these comments.
+          </ListItem>
           <Group grow>
             <Image src="/images/ITApp/viewcomments.png" />
             <Space h="lg" />
           </Group>
           <Space h="lg" />
-          <ListItem fw={200}>Change issue status</ListItem>
+          <ListItem fw={200}>
+            Change issue status: The users who raised an issue may change its status to reflect the
+            progress of the issue. Closed issues are resolved while open issues are in progress.
+            Parked issues are delayed while dropped issues are abandoned.
+          </ListItem>
           <Group grow>
             <Image src="/images/ITApp/changestatus.png" />
             <Space h="lg" />
           </Group>
           <Space h="lg" />
         </List>
-        <Title size="h5"></Title>
+        <Title size="h5">Software and Frameworks Used</Title>
+        <List className="list-disc" px={15}>
+          <ListItem fw={200}>
+            Visual Studio Code: A code editor from Microsoft that provides tools for various
+            programming languages.
+          </ListItem>
+          <ListItem fw={200}>
+            HeidiSQL: A database management tool for MySQL, MariaDB, and SQL Server databases. It
+            offers features for database management and an easy-to-use interface.
+          </ListItem>
+          <ListItem fw={200}>
+            Mailpit: An email testing tool that captures emails sent from applications. It helps
+            inspect emails without sending them to real recipients.
+          </ListItem>
+          <ListItem fw={200}>
+            React.js: A JavaScript library for building user interfaces, maintained by Facebook. It
+            allows developers to create web applications that update and render efficiently.
+          </ListItem>
+          <ListItem fw={200}>
+            Laravel: A PHP framework for web application development. It simplifies tasks like
+            routing, authentication, and caching.
+          </ListItem>
+          <ListItem fw={200}>
+            SQL Server: A relational database management system developed by Microsoft. It provides
+            features for data storage, retrieval, and management.
+          </ListItem>
+        </List>
       </Stack>
     </>
   );
