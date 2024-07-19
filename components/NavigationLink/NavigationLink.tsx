@@ -1,4 +1,4 @@
-import { Text } from '@mantine/core';
+import { MantineStyleProps, Text } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import Link from 'next/link';
 import { IconChevronRight } from '@tabler/icons-react';
@@ -7,11 +7,22 @@ import { useEffect, useState } from 'react';
 interface IProps {
   label: string;
   link: string;
-  isActive: boolean;
+  isActive?: boolean;
   onClick?: () => void;
+  ta?: MantineStyleProps['ta'];
+  justify?: string;
+  target?: string;
 }
 
-export default function NavigationLink({ label, link, isActive, onClick }: IProps) {
+export default function NavigationLink({
+  label,
+  link,
+  isActive,
+  onClick,
+  ta,
+  target,
+  justify,
+}: IProps) {
   const { hovered, ref } = useHover();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -20,14 +31,15 @@ export default function NavigationLink({ label, link, isActive, onClick }: IProp
   }, [hovered]);
 
   return (
-    <span ref={ref} className="relative flex w-36 items-center justify-end">
+    <span ref={ref} className={`relative flex max-w-xs items-center ${justify}`}>
       {isActive && <IconChevronRight className="mr-1 animate-slideRight" />}
       <Text
-        ta="end"
+        ta={ta}
         component={Link}
         fz={{ base: 'lg', sm: 'md' }}
         fw={200}
         href={link}
+        target={target}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="relative"

@@ -24,6 +24,8 @@ export default function NavigationLinks({ onClick }: IProps) {
           link={link.link}
           isActive={pathname === link.link}
           onClick={onClick}
+          ta="end"
+          justify="justify-end"
         />
       ))}
     </Stack>
