@@ -1,6 +1,18 @@
-import { Group, Image, List, ListItem, Space, Stack, Text, Title } from '@mantine/core';
+'use client';
+
+import { useState } from 'react';
+import { Group, Image, List, ListItem, Space, Stack, Text, Title, Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 export default function SuhayProject() {
+  const [modalOpened, modalToggle] = useDisclosure(false);
+  const [currentImage, setCurrentImage] = useState('');
+
+  const handleImageClick = (src: string) => {
+    setCurrentImage(src);
+    modalToggle.open();
+  };
+
   return (
     <>
       <Stack>
@@ -72,8 +84,16 @@ export default function SuhayProject() {
             viewing are those that the user is an attendee in.
           </ListItem>
           <Group grow>
-            <Image src="/images/ITApp/createmeeting.png" />
-            <Image src="/images/ITApp/viewmeetings.png" />
+            <Image
+              src="/images/ITApp/createmeeting.png"
+              onClick={() => handleImageClick('/images/ITApp/createmeeting.png')}
+              className="cursor-pointer"
+            />
+            <Image
+              src="/images/ITApp/viewmeetings.png"
+              onClick={() => handleImageClick('/images/ITApp/viewmeetings.png')}
+              className="cursor-pointer"
+            />
           </Group>
           <Space h="lg" />
           <ListItem fw={200}>
@@ -85,8 +105,16 @@ export default function SuhayProject() {
             may filter out issues based on their status.
           </ListItem>
           <Group grow>
-            <Image src="/images/ITApp/createissue.png" />
-            <Image src="/images/ITApp/viewissuesonmeeting.png" />
+            <Image
+              src="/images/ITApp/createissue.png"
+              onClick={() => handleImageClick('/images/ITApp/createissue.png')}
+              className="cursor-pointer"
+            />
+            <Image
+              src="/images/ITApp/viewissuesonmeeting.png"
+              onClick={() => handleImageClick('/images/ITApp/viewissuesonmeeting.png')}
+              className="cursor-pointer"
+            />
           </Group>
           <Space h="lg" />
           <ListItem fw={200}>
@@ -94,8 +122,16 @@ export default function SuhayProject() {
             issues to help them find what they need.
           </ListItem>
           <Group grow>
-            <Image src="/images/ITApp/viewissues.png" />
-            <Image src="/images/ITApp/viewmeetings.png" />
+            <Image
+              src="/images/ITApp/viewissues.png"
+              onClick={() => handleImageClick('/images/ITApp/viewissues.png')}
+              className="cursor-pointer"
+            />
+            <Image
+              src="/images/ITApp/viewmeetings.png"
+              onClick={() => handleImageClick('/images/ITApp/viewmeetings.png')}
+              className="cursor-pointer"
+            />
           </Group>
           <Space h="lg" />
           <ListItem fw={200}>
@@ -105,7 +141,11 @@ export default function SuhayProject() {
             also able to attach and download files as needed within these comments.
           </ListItem>
           <Group grow>
-            <Image src="/images/ITApp/viewcomments.png" />
+            <Image
+              src="/images/ITApp/viewcomments.png"
+              onClick={() => handleImageClick('/images/ITApp/viewcomments.png')}
+              className="cursor-pointer"
+            />
             <Space h="lg" />
           </Group>
           <Space h="lg" />
@@ -115,7 +155,11 @@ export default function SuhayProject() {
             Parked issues are delayed while dropped issues are abandoned.
           </ListItem>
           <Group grow>
-            <Image src="/images/ITApp/changestatus.png" />
+            <Image
+              src="/images/ITApp/changestatus.png"
+              onClick={() => handleImageClick('/images/ITApp/changestatus.png')}
+              className="cursor-pointer"
+            />
             <Space h="lg" />
           </Group>
           <Space h="lg" />
@@ -148,6 +192,9 @@ export default function SuhayProject() {
           </ListItem>
         </List>
       </Stack>
+      <Modal opened={modalOpened} onClose={modalToggle.close} size="xl" centered>
+        <Image src={currentImage} />
+      </Modal>
     </>
   );
 }
