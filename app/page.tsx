@@ -1,14 +1,14 @@
 'use client';
 
 import { Stack, Group, Title, Text } from '@mantine/core';
-import { IconBrandFacebook, IconMail, IconPhone } from '@tabler/icons-react';
+import { IconBrandFacebook, IconBrandGithub, IconMail, IconPhone } from '@tabler/icons-react';
 import GradientButton from '@/components/GradientButton/GradientButton';
 import NavigationLink from '@/components/NavigationLink/NavigationLink';
 
 export default function HomePage() {
   return (
     <>
-      <Stack justify="center" align="center" h="75svh" m="auto">
+      <Stack justify="center" align="center" h="72svh" m="auto">
         <Title fz={{ base: 24, md: 30 }} ta={{ base: 'left', md: 'center' }} fw={100}>
           With a passion for web and software development, I am eager to bring innovative solutions
           to real-world challenges.
@@ -44,6 +44,11 @@ export default function HomePage() {
             label="Josh Aleister Valenzuela"
             target="_blank"
           />
+        </Group>
+        <Group>
+          <IconBrandGithub size={20} />
+          <Text>Github:</Text>
+          <NavigationLink link="https://github.com/jshalstr" label="jshalstr" target="_blank" />
         </Group>
         <Group>
           <IconPhone size={20} />
