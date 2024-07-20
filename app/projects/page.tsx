@@ -2,6 +2,7 @@
 
 import {
   Badge,
+  Button,
   Group,
   Image,
   List,
@@ -17,6 +18,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import NextImage from 'next/image';
+import Link from 'next/link';
 
 interface Project {
   title: string;
@@ -26,6 +28,8 @@ interface Project {
   tags: string[];
   type: 'video' | 'image';
   course: string[];
+  withDiscussion?: boolean;
+  discussionLink?: string;
 }
 
 const projects: Project[] = [
@@ -42,6 +46,8 @@ const projects: Project[] = [
     tags: ['Kotlin', 'Jetpack Compose', 'Android', 'Room'],
     type: 'video',
     course: ['IT200-1D', 'IT200-2D'],
+    withDiscussion: true,
+    discussionLink: '/glimpse',
   },
   {
     title: 'Autopot',
@@ -202,6 +208,18 @@ function ProjectDetails({ project }: { project: Project }) {
             </Badge>
           ))}
         </Group>
+        {project.withDiscussion && (
+          <Button
+            component={Link}
+            href="/projects/glimpse"
+            radius="xl"
+            color="green"
+            variant="outline"
+            size="xs"
+          >
+            View Discussion
+          </Button>
+        )}
       </Stack>
     </motion.div>
   );
