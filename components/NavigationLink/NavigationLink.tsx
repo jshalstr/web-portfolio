@@ -36,7 +36,7 @@ export default function NavigationLink({
       <Text
         ta={ta}
         component={Link}
-        fz={{ base: 'lg', sm: 'md' }}
+        fz={{ base: 'lg', sm: 'md', lg: 'lg' }}
         fw={200}
         href={link}
         target={target}

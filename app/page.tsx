@@ -1,17 +1,26 @@
 'use client';
 
 import { Stack, Group, Title, Text } from '@mantine/core';
-import { IconBrandFacebook, IconBrandGithub, IconMail, IconPhone } from '@tabler/icons-react';
+import { IconBrandFacebook, IconBrandGit, IconMail, IconPhone } from '@tabler/icons-react';
 import GradientButton from '@/components/GradientButton/GradientButton';
 import NavigationLink from '@/components/NavigationLink/NavigationLink';
 
 export default function HomePage() {
   return (
     <>
-      <Stack justify="center" align="center" h="72svh" m="auto">
-        <Title fz={{ base: 24, md: 30 }} ta={{ base: 'left', md: 'center' }} fw={100}>
-          With a passion for web and software development, I am eager to bring innovative solutions
-          to real-world challenges.
+      <Stack justify="center" align="center" h="71svh" m="auto">
+        <Title
+          fz={{ base: 24, md: 30, xl: 40 }}
+          ta={{ base: 'left', md: 'center' }}
+          fw={600}
+          ff="Archivo Black, sans-serif"
+        >
+          With a passion for{' '}
+          <span className="bg-gradient-to-r from-[#F08F27] via-[#1DB9D1] to-[#691FE1] bg-clip-text text-transparent">
+            web and software development
+          </span>
+          , I am eager to bring innovative solutions to{' '}
+          <span className="underline">real-world challenges</span>.
         </Title>
         <Group>
           <GradientButton
@@ -46,7 +55,7 @@ export default function HomePage() {
           />
         </Group>
         <Group>
-          <IconBrandGithub size={20} />
+          <IconBrandGit size={20} />
           <Text>Github:</Text>
           <NavigationLink link="https://github.com/jshalstr" label="jshalstr" target="_blank" />
         </Group>
